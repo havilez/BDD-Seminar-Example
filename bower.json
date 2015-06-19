@@ -1,0 +1,25 @@
+{
+  "name": "SeminarProj",
+  "version": "0.0.1",
+  "authors": [
+    "Harold Avilez <havilez@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lodash": "~3.9.3"
+  },
+  "description": "BDD example",
+  "main": "SpecRunner.html",
+  "keywords": [
+    "lodash"
+  ],
+  "homepage": "SpecRunner.html"
+}
