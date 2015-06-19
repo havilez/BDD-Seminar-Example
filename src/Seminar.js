@@ -15,7 +15,7 @@ var Seminar = {
         return (this._name);
     },
     netPrice: function(){
-        return this._price;
+        return ( this._price - this.discount() )
     },
     grossPrice: function(){
         return this.netPrice() *(this.isTaxFree() ? 1 : VAT_RATE);
@@ -30,13 +30,13 @@ var Seminar = {
         return this.have3LetterDiscountGranted() ? this.DISCOUNT_PERCENTAGE : 0;
     },
     discount: function() {
-        if ( this.isTaxFree())
-            return this._price * this.DISCOUNT_PERCENTAGE;
-        else {
-            return this._price * 0;
-        }
+
+        return  this.discountPercentage() / 100 * this._price;
 
 
+    },
+    toString: function(){
+        {return '#<Seminar "' + this._name + '">';}
     }
 
 };

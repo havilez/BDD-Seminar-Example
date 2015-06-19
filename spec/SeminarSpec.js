@@ -64,12 +64,15 @@ describe("A 3 letter Seminar", function () {
         expect(seminar.discountPercentage()).toEqual(5);
     });
 
-    describe("that is priced $200", function () {
+    describe("A 3 letter-Seminr that is priced $200", function () {
         beforeEach(function () {
-            seminar = SeminarFactory.create({name: "BDD", price: 20});
+            seminar = SeminarFactory.create({name: "BDD", price: 200});
         });
         it('should have a discount of $10', function () {
             expect(seminar.discount()).toEqual(10);
+        });
+        it('should have a net price of $190', function () {
+            expect(seminar.netPrice()).toEqual(190);
         });
     });
 });
