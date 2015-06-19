@@ -1,6 +1,7 @@
 var VAT_RATE = 1.2;
 
 var Seminar = {
+    DISCOUNT_PERCENTAGE: 5,
     create: function(parms) {
         return Object.create(Seminar).init(parms.name, parms.price,parms.taxFree);
     },
@@ -23,7 +24,19 @@ var Seminar = {
         return this._taxFree;
     },
     have3LetterDiscountGranted: function(){
-     return true;
+     return this._name.length <= 3;
+    },
+    discountPercentage: function() {
+        return this.have3LetterDiscountGranted() ? this.DISCOUNT_PERCENTAGE : 0;
+    },
+    discount: function() {
+        if ( this.isTaxFree())
+            return this._price * this.DISCOUNT_PERCENTAGE;
+        else {
+            return this._price * 0;
+        }
+
+
     }
 
 };

@@ -23,6 +23,8 @@ describe('Seminar', function () {
         expect(seminar.grossPrice()).toEqual(120);
     });
 
+
+
 });
 
 describe("A tax-free Seminar", function () {
@@ -44,6 +46,7 @@ describe("A tax-free Seminar", function () {
 
         expect(seminar.grossPrice()).toEqual(seminar.netPrice());
     });
+
 });
 
 describe("A 3 letter Seminar", function () {
@@ -53,6 +56,36 @@ describe("A 3 letter Seminar", function () {
     });
 
     it('should have 3 letter discount granted', function () {
+        // custom matcher can pass 2 parameters actual and expected
+        // in this case we only pass actual
        expect(seminar).toHave3LetterDiscountGranted();
     });
+    it('should give a discount of 5%', function () {
+        expect(seminar.discountPercentage()).toEqual(5);
+    });
+
+    describe("that is priced $200", function () {
+        beforeEach(function () {
+            seminar = SeminarFactory.create({name: "BDD", price: 20});
+        });
+        it('should have a discount of $10', function () {
+            expect(seminar.discount()).toEqual(10);
+        });
+    });
+});
+
+describe("A Seminar with a name of more than 3 letters", function () {
+    var seminar;
+    beforeEach(function () {
+        seminar = SeminarFactory.create({name: "JavaScript-Basics"});
+    });
+
+    it('should not have a 3 letter discount granted', function () {
+
+        expect(seminar).not.toHave3LetterDiscountGranted();
+    });
+    it('should have a discount of 0%', function () {
+        expect(seminar.discountPercentage()).toEqual(0);
+    });
+
 });
